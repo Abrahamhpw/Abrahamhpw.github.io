@@ -3,187 +3,444 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>我的个人主页</title>
+  <title>你的名字 | Academic Homepage</title>
   <style>
+    :root {
+      --bg: #f8f4ee;
+      --bg-soft: #fcfaf7;
+      --card: #fffdf9;
+      --primary: #9c5b3d;
+      --primary-dark: #7f462d;
+      --accent: #d8b08c;
+      --text: #2f2723;
+      --text-light: #6f625b;
+      --border: #eadfd4;
+      --shadow: 0 8px 24px rgba(90, 60, 40, 0.08);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC",
-                   "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
-      line-height: 1.7;
-      background: #f5f7fb;
-      color: #222;
+      font-family: "Georgia", "Times New Roman", "PingFang SC", "Hiragino Sans GB",
+                   "Microsoft YaHei", serif;
+      background: linear-gradient(to bottom, #f6efe7 0%, #fbf8f3 100%);
+      color: var(--text);
+      line-height: 1.75;
     }
 
-    header {
-      background: linear-gradient(135deg, #1f6feb, #6ea8fe);
-      color: white;
-      padding: 80px 20px 60px;
-      text-align: center;
+    a {
+      color: var(--primary);
+      text-decoration: none;
     }
 
-    header h1 {
-      font-size: 42px;
-      margin-bottom: 12px;
+    a:hover {
+      color: var(--primary-dark);
     }
 
-    header p {
-      font-size: 18px;
-      opacity: 0.95;
-    }
-
-    nav {
-      background: white;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 14px 20px;
+    .topbar {
+      width: 100%;
+      background: rgba(255, 250, 245, 0.92);
+      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
     }
 
-    nav ul {
-      list-style: none;
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 24px;
       display: flex;
-      gap: 24px;
-      justify-content: center;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
     }
 
-    nav a {
-      text-decoration: none;
-      color: #1f6feb;
-      font-weight: 600;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    section {
-      background: white;
-      margin-bottom: 24px;
-      padding: 28px;
-      border-radius: 16px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-    }
-
-    section h2 {
-      margin-bottom: 16px;
-      color: #111827;
-      font-size: 26px;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 18px;
-      background: #fafafa;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
+    .nav-title {
       font-size: 20px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: 0.3px;
     }
 
-    .card p {
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
       font-size: 15px;
-      color: #4b5563;
-      margin-bottom: 12px;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 24px 48px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 44px;
+      line-height: 1.2;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+    }
+
+    .hero-text .subtitle {
+      font-size: 19px;
+      color: var(--text-light);
+      margin-bottom: 18px;
+    }
+
+    .hero-text p {
+      font-size: 17px;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .hero-links {
+      margin-top: 22px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .btn {
       display: inline-block;
-      padding: 10px 16px;
-      background: #1f6feb;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      background: #fff8f1;
+      color: var(--primary-dark);
       font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #f4e4d7;
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ead3bf, #d7b39a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fffaf6;
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .hero-card h3 {
+      text-align: center;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .hero-card p {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 70px;
+    }
+
+    .section {
+      margin-top: 28px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 34px 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .section h2 {
+      font-size: 28px;
+      color: var(--primary-dark);
+      margin-bottom: 18px;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .section h2::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 4px;
+      height: 28px;
+      border-radius: 2px;
+      background: var(--accent);
+    }
+
+    .section p {
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .research-list,
+    .contact-list {
+      margin-left: 20px;
+      color: var(--text);
+    }
+
+    .research-list li,
+    .contact-list li {
+      margin-bottom: 10px;
+    }
+
+    .paper-item,
+    .project-item {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .paper-item:last-child,
+    .project-item:last-child {
+      border-bottom: none;
+    }
+
+    .paper-title,
+    .project-title {
+      font-size: 18px;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .paper-meta,
+    .project-meta {
+      font-size: 15px;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+
+    .paper-desc,
+    .project-desc {
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      margin: 6px 8px 0 0;
+      background: #f6e9de;
+      color: var(--primary-dark);
+      border-radius: 999px;
+      font-size: 13px;
+      border: 1px solid #ead5c6;
     }
 
     footer {
       text-align: center;
-      color: #6b7280;
-      padding: 30px 20px 50px;
+      padding: 28px 20px 42px;
+      color: var(--text-light);
       font-size: 14px;
     }
 
-    .contact a {
-      color: #1f6feb;
-      text-decoration: none;
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h1 {
+        font-size: 34px;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .section {
+        padding: 28px 22px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>你的名字</h1>
-    <p>研究方向 / 职业身份 / 一句话简介</p>
-  </header>
+  <div class="topbar">
+    <div class="nav">
+      <div class="nav-title">Academic Homepage</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
 
-  <nav>
-    <ul>
-      <li><a href="#about">关于我</a></li>
-      <li><a href="#projects">项目经历</a></li>
-      <li><a href="#contact">联系方式</a></li>
-    </ul>
-  </nav>
-
-  <div class="container">
-    <section id="about">
-      <h2>关于我</h2>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>你的名字</h1>
+      <div class="subtitle">博士研究生 / 助理教授 / Researcher</div>
       <p>
-        你好，我是你的名字。这里可以写你的学校、专业、研究方向、工作内容，
-        以及你最想让别人快速了解的信息。
+        这里写一句简洁的学术介绍。例如：我目前主要从事多智能体强化学习、
+        群体机器人协同控制、具身智能与大模型决策等方向的研究。
       </p>
       <p>
-        例如：我目前主要从事多智能体强化学习、具身智能、群体机器人协同控制等方向的研究。
+        欢迎访问我的个人主页。这里展示我的研究兴趣、代表性论文、项目经历和联系方式。
+      </p>
+
+      <div class="hero-links">
+        <a class="btn" href="https://scholar.google.com/" target="_blank">Google Scholar</a>
+        <a class="btn" href="https://github.com/yourname" target="_blank">GitHub</a>
+        <a class="btn" href="cv.pdf" target="_blank">CV</a>
+        <a class="btn" href="mailto:your_email@example.com">Email</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="avatar">YZ</div>
+      <h3>你的名字</h3>
+      <p>School / Department</p>
+      <p>University / Institute</p>
+      <p>City, Country</p>
+      <p>邮箱：your_email@example.com</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <section class="section" id="about">
+      <h2>About Me</h2>
+      <p>
+        这里写你的个人简介。建议包括当前身份、所在单位、教育背景，以及你主要关注的问题。
+      </p>
+      <p>
+        例如：我目前在某某大学某某学院攻读博士学位，研究兴趣包括多智能体强化学习、
+        群智协同控制、机器人路径规划以及面向复杂环境的智能决策方法。
       </p>
     </section>
 
-    <section id="projects">
-      <h2>项目经历</h2>
-      <div class="projects">
-        <div class="card">
-          <h3>项目 1</h3>
-          <p>这里写项目简介，说明你做了什么、解决了什么问题。</p>
-          <a class="btn" href="https://github.com/" target="_blank">查看项目</a>
-        </div>
+    <section class="section" id="research">
+      <h2>Research Interests</h2>
+      <ul class="research-list">
+        <li>多智能体强化学习（Multi-Agent Reinforcement Learning）</li>
+        <li>群体机器人协同控制（Swarm Robotics）</li>
+        <li>具身智能与大模型决策（Embodied Intelligence & LLMs）</li>
+        <li>多机器人任务分配与路径规划（MRTA / MAPF）</li>
+      </ul>
 
-        <div class="card">
-          <h3>项目 2</h3>
-          <p>这里可以写论文、代码仓库、比赛项目或者个人作品。</p>
-          <a class="btn" href="https://github.com/" target="_blank">查看详情</a>
-        </div>
+      <div style="margin-top: 14px;">
+        <span class="tag">MARL</span>
+        <span class="tag">Swarm Intelligence</span>
+        <span class="tag">Embodied AI</span>
+        <span class="tag">Robotics</span>
+        <span class="tag">LLM</span>
+      </div>
+    </section>
 
-        <div class="card">
-          <h3>项目 3</h3>
-          <p>这里写你想重点展示的内容，比如技术栈、成果或应用场景。</p>
-          <a class="btn" href="https://github.com/" target="_blank">访问链接</a>
+    <section class="section" id="publications">
+      <h2>Selected Publications</h2>
+
+      <div class="paper-item">
+        <div class="paper-title">论文标题 1</div>
+        <div class="paper-meta">
+          你的名字, 合作者姓名. Conference / Journal, 2026.
+        </div>
+        <div class="paper-desc">
+          这里写一句简洁介绍，说明论文主要解决了什么问题、提出了什么方法。
+          <a href="#">[Paper]</a>
+          <a href="#">[Code]</a>
+          <a href="#">[BibTeX]</a>
+        </div>
+      </div>
+
+      <div class="paper-item">
+        <div class="paper-title">论文标题 2</div>
+        <div class="paper-meta">
+          你的名字, 合作者姓名. Conference / Journal, 2025.
+        </div>
+        <div class="paper-desc">
+          这里继续放代表性论文。数量不必太多，3到6篇比较合适。
+          <a href="#">[Paper]</a>
+          <a href="#">[Code]</a>
+        </div>
+      </div>
+
+      <div class="paper-item">
+        <div class="paper-title">论文标题 3</div>
+        <div class="paper-meta">
+          你的名字, 合作者姓名. Conference / Journal, 2024.
+        </div>
+        <div class="paper-desc">
+          如果你有预印本，也可以写 arXiv，并附链接。
+          <a href="#">[Paper]</a>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="contact">
-      <h2>联系方式</h2>
-      <p>邮箱：your_email@example.com</p>
-      <p>GitHub：<a href="https://github.com/yourname" target="_blank">https://github.com/yourname</a></p>
-      <p>如果你愿意，也可以放 LinkedIn、Google Scholar、个人博客等链接。</p>
+    <section class="section" id="projects">
+      <h2>Projects</h2>
+
+      <div class="project-item">
+        <div class="project-title">项目名称 1</div>
+        <div class="project-meta">2025 – Present</div>
+        <div class="project-desc">
+          这里写项目简介，例如项目目标、你的职责、主要成果或应用场景。
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-title">项目名称 2</div>
+        <div class="project-meta">2024 – 2025</div>
+        <div class="project-desc">
+          可以写国家级项目、校级项目、比赛项目或开源项目。
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li>Email: <a href="mailto:your_email@example.com">your_email@example.com</a></li>
+        <li>GitHub: <a href="https://github.com/yourname" target="_blank">https://github.com/yourname</a></li>
+        <li>Google Scholar: <a href="https://scholar.google.com/" target="_blank">Your Profile</a></li>
+        <li>Office / Address: 这里填单位地址</li>
+      </ul>
     </section>
   </div>
 
   <footer>
-    © 2026 你的名字. All Rights Reserved.
+    © 2026 你的名字 · Academic Homepage
   </footer>
 </body>
 </html>
