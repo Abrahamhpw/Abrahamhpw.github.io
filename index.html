@@ -1,1 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>我的个人主页</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC",
+                   "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.7;
+      background: #f5f7fb;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1f6feb, #6ea8fe);
+      color: white;
+      padding: 80px 20px 60px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      font-size: 18px;
+      opacity: 0.95;
+    }
+
+    nav {
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 14px 20px;
+      position: sticky;
+      top: 0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #1f6feb;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      background: white;
+      margin-bottom: 24px;
+      padding: 28px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    section h2 {
+      margin-bottom: 16px;
+      color: #111827;
+      font-size: 26px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 18px;
+      background: #fafafa;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #4b5563;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background: #1f6feb;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      color: #6b7280;
+      padding: 30px 20px 50px;
+      font-size: 14px;
+    }
+
+    .contact a {
+      color: #1f6feb;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>你的名字</h1>
+    <p>研究方向 / 职业身份 / 一句话简介</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">关于我</a></li>
+      <li><a href="#projects">项目经历</a></li>
+      <li><a href="#contact">联系方式</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <section id="about">
+      <h2>关于我</h2>
+      <p>
+        你好，我是你的名字。这里可以写你的学校、专业、研究方向、工作内容，
+        以及你最想让别人快速了解的信息。
+      </p>
+      <p>
+        例如：我目前主要从事多智能体强化学习、具身智能、群体机器人协同控制等方向的研究。
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>项目经历</h2>
+      <div class="projects">
+        <div class="card">
+          <h3>项目 1</h3>
+          <p>这里写项目简介，说明你做了什么、解决了什么问题。</p>
+          <a class="btn" href="https://github.com/" target="_blank">查看项目</a>
+        </div>
+
+        <div class="card">
+          <h3>项目 2</h3>
+          <p>这里可以写论文、代码仓库、比赛项目或者个人作品。</p>
+          <a class="btn" href="https://github.com/" target="_blank">查看详情</a>
+        </div>
+
+        <div class="card">
+          <h3>项目 3</h3>
+          <p>这里写你想重点展示的内容，比如技术栈、成果或应用场景。</p>
+          <a class="btn" href="https://github.com/" target="_blank">访问链接</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>联系方式</h2>
+      <p>邮箱：your_email@example.com</p>
+      <p>GitHub：<a href="https://github.com/yourname" target="_blank">https://github.com/yourname</a></p>
+      <p>如果你愿意，也可以放 LinkedIn、Google Scholar、个人博客等链接。</p>
+    </section>
+  </div>
+
+  <footer>
+    © 2026 你的名字. All Rights Reserved.
+  </footer>
+</body>
+</html>
